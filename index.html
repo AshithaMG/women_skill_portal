@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NariShakti – Women Skill Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rose: #e8476a;
+      --rose-light: #f9d0da;
+      --gold: #f0a500;
+      --deep: #1a0a2e;
+      --ink: #2d1b4e;
+      --soft: #fdf6f9;
+      --muted: #7a6a8a;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--soft);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(253,246,249,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rose-light);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw; height: 68px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--rose);
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink);
+      font-weight: 500; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta {
+      background: var(--rose); color: var(--white);
+      border: none; padding: 0.55rem 1.4rem;
+      border-radius: 50px; font-weight: 600;
+      cursor: pointer; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--ink); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid; place-items: center;
+      padding: 100px 6vw 60px;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 40%, #f9d0da55 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, #f0a50022 0%, transparent 60%),
+        var(--soft);
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; max-width: 1200px; width: 100%;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--deep);
+    }
+    .hero-text h1 em {
+      font-style: normal; color: var(--rose);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 6px;
+    }
+    .hero-text p {
+      margin: 1.4rem 0 2rem;
+      color: var(--muted); line-height: 1.7;
+      font-size: 1.05rem; max-width: 460px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--rose); color: var(--white);
+      padding: 0.8rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600;
+      font-size: 1rem; transition: all 0.25s;
+      box-shadow: 0 8px 24px #e8476a33;
+    }
+    .btn-primary:hover { background: var(--deep); box-shadow: none; transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--rose); color: var(--rose);
+      padding: 0.8rem 2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600;
+      font-size: 1rem; transition: all 0.25s;
+    }
+    .btn-outline:hover { background: var(--rose); color: var(--white); }
+
+    .sdg-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--deep); color: var(--white);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 1.2rem; letter-spacing: 0.5px;
+    }
+    .sdg-badge span { background: var(--gold); color: var(--deep); padding: 0.1rem 0.5rem; border-radius: 20px; }
+
+    .hero-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      animation: floatUp 0.8s ease both;
+    }
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-card {
+      background: var(--white); border-radius: 20px;
+      padding: 1.6rem; box-shadow: 0 4px 24px #1a0a2e11;
+      transition: transform 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-card:nth-child(2) { margin-top: 1.5rem; }
+    .stat-card:nth-child(4) { margin-top: 1.5rem; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 900;
+      color: var(--rose);
+    }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 6vw; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 900; color: var(--deep);
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); max-width: 560px; line-height: 1.7; }
+
+    /* ── COURSES ── */
+    #courses { background: var(--white); }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .course-card {
+      border-radius: 20px; overflow: hidden;
+      border: 1.5px solid var(--rose-light);
+      transition: box-shadow 0.3s, transform 0.3s;
+      background: var(--soft);
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px #e8476a1a; }
+    .course-thumb {
+      height: 140px; display: flex; align-items: center;
+      justify-content: center; font-size: 3.5rem;
+    }
+    .course-body { padding: 1.4rem; }
+    .course-tag {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--rose);
+      background: var(--rose-light); padding: 0.2rem 0.6rem;
+      border-radius: 20px; display: inline-block; margin-bottom: 0.6rem;
+    }
+    .course-title { font-weight: 700; font-size: 1rem; color: var(--deep); margin-bottom: 0.4rem; }
+    .course-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem; }
+    .course-meta { display: flex; justify-content: space-between; align-items: center; }
+    .course-duration { font-size: 0.8rem; color: var(--muted); }
+    .enroll-btn {
+      background: var(--rose); color: var(--white);
+      border: none; padding: 0.45rem 1.1rem;
+      border-radius: 50px; font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; transition: background 0.2s;
+    }
+    .enroll-btn:hover { background: var(--deep); }
+
+    /* ── ABOUT / SDG ── */
+    #about {
+      background:
+        radial-gradient(ellipse 60% 80% at 5% 50%, #f9d0da33 0%, transparent 60%),
+        var(--soft);
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .sdg-box {
+      background: var(--deep); border-radius: 24px;
+      padding: 2.5rem; color: var(--white);
+    }
+    .sdg-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .sdg-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; margin-bottom: 0.8rem; color: var(--gold);
+    }
+    .sdg-box p { line-height: 1.7; color: #c9b8d8; }
+    .goals-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .goal-item {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.9rem; color: #c9b8d8;
+    }
+    .goal-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 5px;
+    }
+    .about-text .section-title { margin-bottom: 1.2rem; }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+
+    /* ── REGISTER ── */
+    #register { background: var(--white); }
+    .register-wrap {
+      max-width: 600px; margin: 3rem auto 0;
+      background: var(--soft); border-radius: 28px;
+      padding: 3rem; border: 1.5px solid var(--rose-light);
+      box-shadow: 0 8px 40px #e8476a0d;
+    }
+    .form-group { margin-bottom: 1.4rem; }
+    label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--ink); }
+    input, select, textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      border: 1.5px solid #e0d0ea; border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      background: var(--white); color: var(--ink);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px #e8476a18;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .submit-btn {
+      width: 100%; background: var(--rose); color: var(--white);
+      border: none; padding: 1rem; border-radius: 50px;
+      font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; transition: all 0.25s;
+      margin-top: 0.5rem; letter-spacing: 0.3px;
+    }
+    .submit-btn:hover { background: var(--deep); transform: translateY(-2px); }
+    .success-msg {
+      display: none; text-align: center; padding: 1.5rem;
+      background: #d4edda; border-radius: 12px; color: #155724;
+      font-weight: 600; margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep); color: #c9b8d8;
+      padding: 3rem 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer .logo { color: var(--rose-light); }
+    footer p { font-size: 0.85rem; }
+    .footer-sdg {
+      background: var(--gold); color: var(--deep);
+      padding: 0.4rem 1rem; border-radius: 20px;
+      font-weight: 700; font-size: 0.82rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Nari<span>Shakti</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Join Free</button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid">
+    <div class="hero-text fade-in">
+      <div class="sdg-badge">🌍 United Nations <span>SDG 5</span> — Gender Equality</div>
+      <h1>Empower <em>Women</em><br>Through Skills &<br>Knowledge</h1>
+      <p>NariShakti is a free training portal dedicated to upskilling women across India — from digital literacy to entrepreneurship, healthcare to coding.</p>
+      <div class="hero-btns">
+        <a href="#courses" class="btn-primary">Explore Courses →</a>
+        <a href="#register" class="btn-outline">Register Now</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card fade-in">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Free Courses Available</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">12K+</div>
+        <div class="stat-label">Women Enrolled</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free & Accessible</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Skill Categories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-label">What We Offer</div>
+  <div class="section-title">Skill Training Programs</div>
+  <p class="section-sub">Choose from a wide range of practical, job-ready courses designed especially for women at every stage of life.</p>
+  <div class="courses-grid">
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#fde8ef;">💻</div>
+      <div class="course-body">
+        <span class="course-tag">Technology</span>
+        <div class="course-title">Digital Literacy & Computer Basics</div>
+        <div class="course-desc">Learn to use computers, internet, email, and essential office tools from scratch.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 4 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#fff3d6;">🧵</div>
+      <div class="course-body">
+        <span class="course-tag">Vocational</span>
+        <div class="course-title">Fashion Design & Tailoring</div>
+        <div class="course-desc">Master stitching, pattern making, and fashion design to start your own business.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 6 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#e8f4f8;">📊</div>
+      <div class="course-body">
+        <span class="course-tag">Business</span>
+        <div class="course-title">Entrepreneurship & Finance</div>
+        <div class="course-desc">Learn how to start, manage, and grow your own business with basic financial planning.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 8 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#f0f9e8;">🌿</div>
+      <div class="course-body">
+        <span class="course-tag">Healthcare</span>
+        <div class="course-title">Health & Wellness Awareness</div>
+        <div class="course-desc">Understand women's health, nutrition, mental wellness, and first aid essentials.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 3 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#f3e8ff;">📱</div>
+      <div class="course-body">
+        <span class="course-tag">Technology</span>
+        <div class="course-title">Social Media & Online Marketing</div>
+        <div class="course-desc">Build your brand online, run ads, and grow your business using social platforms.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 5 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-in">
+      <div class="course-thumb" style="background:#fde8ef;">🗣️</div>
+      <div class="course-body">
+        <span class="course-tag">Communication</span>
+        <div class="course-title">English Speaking & Communication</div>
+        <div class="course-desc">Gain confidence in spoken English, interviews, and professional communication.</div>
+        <div class="course-meta">
+          <span class="course-duration">⏱ 6 Weeks</span>
+          <button class="enroll-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Enroll</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / SDG -->
+<section id="about">
+  <div class="about-grid">
+    <div class="sdg-box fade-in">
+      <div class="sdg-icon">⚖️</div>
+      <h3>UN SDG Goal 5<br>Gender Equality</h3>
+      <p>NariShakti directly supports the United Nations Sustainable Development Goal 5 — achieving gender equality and empowering all women and girls.</p>
+      <div class="goals-list">
+        <div class="goal-item"><div class="goal-dot"></div><span>End discrimination against women in education & work</span></div>
+        <div class="goal-item"><div class="goal-dot"></div><span>Ensure women's full participation in leadership</span></div>
+        <div class="goal-item"><div class="goal-dot"></div><span>Provide equal access to economic resources & skills</span></div>
+        <div class="goal-item"><div class="goal-dot"></div><span>Leverage technology to promote women's empowerment</span></div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <div class="section-label">Our Mission</div>
+      <div class="section-title">Why NariShakti?</div>
+      <p>In India, millions of women lack access to quality skill training due to financial, social, and geographic barriers. NariShakti breaks these barriers by bringing free, certified training directly to every woman's device.</p>
+      <p>Built on AWS Amplify, our platform ensures 99.9% uptime, fast loading in low-bandwidth areas, and secure data — so no woman is left behind.</p>
+      <p>Our courses are developed by industry experts and NGO partners, designed to lead to real employment, self-employment, or higher education opportunities.</p>
+      <a href="#register" class="btn-primary" style="display:inline-block; margin-top:1rem;">Start Your Journey →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <div class="section-label" style="text-align:center;">Join Us</div>
+  <div class="section-title" style="text-align:center;">Register for Free</div>
+  <p class="section-sub" style="text-align:center; margin:0 auto;">Fill in your details below and get instant access to all skill training programs — completely free.</p>
+
+  <div class="register-wrap fade-in">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="e.g. Priya" required/>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="e.g. Sharma" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="priya@example.com" required/>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="+91 9876543210"/>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select id="state">
+        <option value="">Select your state</option>
+        <option>Andhra Pradesh</option><option>Karnataka</option>
+        <option>Maharashtra</option><option>Tamil Nadu</option>
+        <option>Uttar Pradesh</option><option>West Bengal</option>
+        <option>Rajasthan</option><option>Gujarat</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="course">Choose a Course</label>
+      <select id="course">
+        <option value="">Select a course</option>
+        <option>Digital Literacy & Computer Basics</option>
+        <option>Fashion Design & Tailoring</option>
+        <option>Entrepreneurship & Finance</option>
+        <option>Health & Wellness Awareness</option>
+        <option>Social Media & Online Marketing</option>
+        <option>English Speaking & Communication</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Why do you want to join? (optional)</label>
+      <textarea id="message" rows="3" placeholder="Tell us about your goals..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="handleRegister()">Register Now 🌸</button>
+    <div class="success-msg" id="successMsg">
+      🎉 Registration Successful! Welcome to NariShakti. Check your email for next steps.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Nari<span style="color:var(--gold)">Shakti</span></div>
+  <p>© 2024 NariShakti Women Skill Portal. Built on AWS Amplify. Powered by purpose.</p>
+  <div class="footer-sdg">🌍 SDG Goal 5 — Gender Equality</div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Register form
+  function handleRegister() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const course = document.getElementById('course').value;
+    if (!fname || !email || !course) {
+      alert('Please fill in Name, Email, and select a Course to register.');
+      return;
+    }
+    document.getElementById('successMsg').style.display = 'block';
+    document.querySelectorAll('input, select, textarea').forEach(el => el.value = '');
+    setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 5000);
+  }
+</script>
+</body>
+</html>
